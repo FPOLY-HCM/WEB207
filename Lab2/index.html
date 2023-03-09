@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab1</title>
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/all.min.css">
+</head>
+<body>
+    <div class="container my-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-end">
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Thêm mới</button>
+                </div>
+                <div class="modal modal-lg fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Nhập lương tháng 12</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="id" class="form-label">Mã NV</label>
+                                                <input type="text" id="id" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Họ tên</label>
+                                                <input type="text" id="name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="club" class="form-label">Câu lạc bộ</label>
+                                                <select id="club" class="form-select">
+                                                    <option>Đá banh</option>
+                                                    <option>Coder</option>
+                                                    <option>Chụp ảnh</option>
+                                                    <option>Chụp nude</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="salary" class="form-label">Lương</label>
+                                                <input type="number" id="salary" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="bonus" class="form-label">Thưởng</label>
+                                                <input type="number" id="bonus" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="allowance" class="form-label">Phụ cấp</label>
+                                                <input type="number" id="allowance" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="note" class="form-label">Ghi chú</label>
+                                        <textarea id="note" class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save me-2"></i>Lưu</button>
+                                    <button type="reset" class="btn btn-secondary"><i class="fas fa-cancel me-2"></i>Huỷ</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                                <button type="button" class="btn btn-primary">Thêm mới</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create-tab-pane" type="button" role="tab" aria-controls="create-tab-pane" aria-selected="true">Cập nhật</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="list-tab" data-bs-toggle="tab" data-bs-target="#list-tab-pane" type="button" role="tab" aria-controls="list-tab-pane" aria-selected="false">Danh sách</button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="lab2">
+                    <div class="tab-pane fade show active" id="create-tab-pane" role="tabpanel" aria-labelledby="create-tab" tabindex="0">
+                        <div class="card">
+                            <div class="card-header"><i class="fas fa-pencil-alt"></i> Nhập lương tháng 3</div>
+                            <div class="card-body">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="id" class="form-label">Mã NV</label>
+                                                <input type="text" id="id" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Họ tên</label>
+                                                <input type="text" id="name" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="club" class="form-label">Câu lạc bộ</label>
+                                                <select id="club" class="form-select">
+                                                    <option>Đá banh</option>
+                                                    <option>Coder</option>
+                                                    <option>Chụp ảnh</option>
+                                                    <option>Chụp nude</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="salary" class="form-label">Lương</label>
+                                                <input type="number" id="salary" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="bonus" class="form-label">Thưởng</label>
+                                                <input type="number" id="bonus" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label for="allowance" class="form-label">Phụ cấp</label>
+                                                <input type="number" id="allowance" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="note" class="form-label">Ghi chú</label>
+                                        <textarea id="note" class="form-control" rows="3"></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save me-2"></i>Lưu</button>
+                                    <button type="reset" class="btn btn-secondary"><i class="fas fa-cancel me-2"></i>Huỷ</button>
+                                </form>
+                            </div>
+                            <div class="card-footer">Vui lòng nhập thông tin lương cầu thủ</div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="list-tab-pane" role="tabpanel" aria-labelledby="list-tab" tabindex="0">
+                        <div class="card">
+                            <div class="card-header">Danh sách lương tháng 3</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table"></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="plugins/jquery-3.6.3.min.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
