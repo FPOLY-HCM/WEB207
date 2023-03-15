@@ -1,4 +1,4 @@
-import 'angular/angular'
+import 'angular'
 
 const app = angular.module('app', [])
 
