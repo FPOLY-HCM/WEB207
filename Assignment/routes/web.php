@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\View;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('app');
 });
+
+Route::get('/{any}.html', function ($any) {
+    if (! View::exists('template.' . $any)) {
+        abort(404);
+    }
+
+    return view('template.' . $any);
+})->where('any', '.*');

@@ -13,8 +13,10 @@
         @vite(['resources/js/app.js', 'resources/sass/app.scss'])
     </head>
     <body>
-        <div ng-controller="GreetingController">
-            %greeting%
-        </div>
+        @include('partials.header')
+        <main class="container my-4" ng-controller="MainController">
+            <div ng-view></div>
+        </main>
+        @include('partials.footer')
     </body>
 </html>
