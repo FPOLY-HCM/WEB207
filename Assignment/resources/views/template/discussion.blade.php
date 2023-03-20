@@ -37,7 +37,25 @@
             </div>
         </div>
         <div class="col-md-2">
-            hello
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentDiscussionModal">Trả lời chủ đề</button>
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="commentDiscussionModal" tabindex="-1" aria-labelledby="commentDiscussionModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Trả lời chủ đề: %discussion.title%</h5>
+            </div>
+            <div class="modal-body">
+                <textarea name="content" id="content" rows="5" class="form-control" placeholder="Nội dung"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
+                <button type="button" class="btn btn-primary">Trả lời</button>
+            </div>
+        </div>
+    </div>
+</div>
+

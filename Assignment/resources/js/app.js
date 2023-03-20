@@ -1,8 +1,8 @@
+import 'bootstrap'
 import 'angular'
 import 'angular-route'
 
-const app = angular
-    .module('app', ['ngRoute'])
+const app = angular.module('app', ['ngRoute'])
 
 app.config(($interpolateProvider) => {
     $interpolateProvider.startSymbol('%')
@@ -16,28 +16,47 @@ app.controller('MainController', function ($scope, $route) {
 app.controller('HomeController', function ($scope, $http) {
     $scope.discussions = []
 
-    $http.get('api/discussions').then((response) => $scope.discussions = response.data)
+    $http
+        .get('api/discussions')
+        .then((response) => ($scope.discussions = response.data))
+})
+
+app.controller('LoginController', function ($scope, $http) {
+    $scope.email = ''
+    $scope.password = ''
+
+    $scope.login = () => {
+        $http
+            .post('api/login', {
+                email: $scope.email,
+                password: $scope.password,
+            })
+            .then((response) => {
+                console.log(response)
+            })
+    }
 })
 
 app.controller('DiscussionController', function ($scope, $http, $routeParams) {
     $scope.discussion = {}
 
-    $http.get('api/discussions/' + $routeParams.id).then((response) => $scope.discussion = response.data)
+    $http
+        .get('api/discussions/' + $routeParams.id)
+        .then((response) => ($scope.discussion = response.data))
 })
 
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'home.html',
-            controller: 'HomeController'
+            controller: 'HomeController',
         })
         .when('/d/:id', {
             templateUrl: 'discussion.html',
-            controller: 'DiscussionController'
+            controller: 'DiscussionController',
         })
         .when('/login', {
             templateUrl: 'login.html',
-            controller: 'LoginController'
+            controller: 'LoginController',
         })
 })
-
