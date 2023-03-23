@@ -13,12 +13,12 @@ app.controller('MainController', function ($scope, $route) {
     $scope.$route = $route
 })
 
-app.controller('HomeController', function ($scope, $http) {
+app.controller('HomeController', function ($scope, $http, $routeParams) {
     $scope.discussions = []
+    $scope.tags = []
 
-    $http
-        .get('api/discussions')
-        .then((response) => ($scope.discussions = response.data))
+    $http.get($routeParams.slug ? 'api/tags/' + $routeParams.slug : 'api/discussions').then((response) => ($scope.discussions = response.data))
+    $http.get('api/tags').then((response) => ($scope.tags = response.data))
 })
 
 app.controller('LoginController', function ($scope, $http) {
@@ -54,6 +54,10 @@ app.config(function ($routeProvider) {
         .when('/d/:id', {
             templateUrl: 'discussion.html',
             controller: 'DiscussionController',
+        })
+        .when('/t/:slug', {
+            templateUrl: 'home.html',
+            controller: 'HomeController',
         })
         .when('/login', {
             templateUrl: 'login.html',

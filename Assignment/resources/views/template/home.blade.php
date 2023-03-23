@@ -1,10 +1,17 @@
 <div class="row" ng-controller="HomeController">
-    <div class="col-lg-2">
+    <div class="col-lg-3">
         <div class="d-grid">
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#startDiscussionModal">Đăng thảo luận</button>
         </div>
+        <div class="mt-4">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" ng-repeat="tag in tags">
+                    <a href="#!t/%tag.slug%" style="color: %tag.color%">%tag.name%</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="col-md-10">
+    <div class="col-md-9">
         <div>
             <div class="d-flex align-items-start my-2 bg-body-tertiary p-3 rounded" ng-repeat="discussion in discussions">
                 <img class="rounded-circle" style="max-width: 50px;" ng-src="%discussion.user.avatar_url%">

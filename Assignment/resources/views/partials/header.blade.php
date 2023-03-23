@@ -1,6 +1,8 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-dark navbar-expand-lg bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">
+            <img src="https://docs.angularjs.org/img/angularjs-for-header-only.svg" height="30">
+        </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -11,6 +13,9 @@
                     <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
                 </li>
             </ul>
+            <form class="me-4">
+                <input type="text" class="form-control" placeholder="Tìm kiếm">
+            </form>
             @auth
                 <div class="dropdown">
                     <a class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -23,7 +28,7 @@
                     </ul>
                 </div>
             @else
-                <button type="button" class="btn btn-text" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</a>
+                <button type="button" class="btn btn-text text-white" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</a>
             @endauth
         </div>
     </div>
@@ -40,11 +45,11 @@
                 <form ng-submit="login()">
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" id="email" ng-model="email" x class="form-control">
+                        <input type="email" name="email" id="email" ng-model="email"e class="form-control">
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Mật khẩu</label>
-                        <input type="password" name="password" id="password" ng-model="password" x class="form-control">
+                        <input type="password" name="password" id="password" ng-model="password"e class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary">Đăng nhập</button>
                 </form>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -15,7 +16,9 @@ use Illuminate\Support\Facades\View;
 */
 
 Route::get('/', function () {
-    return view('app');
+    $tags = Tag::all();
+
+    return view('app', compact('tags'));
 });
 
 Route::get('/{any}.html', function ($any) {

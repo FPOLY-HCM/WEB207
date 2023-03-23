@@ -15,7 +15,7 @@ class DiscussionSeeder extends Seeder
         $usersCount = User::count();
 
         foreach (range(1, 50) as $i) {
-            Discussion::create([
+            $discussion = Discussion::create([
                 'user_id' => rand(1, $usersCount),
                 'title' => fake()->realText(rand(20, 50)),
                 'slug' => fake()->slug(),
