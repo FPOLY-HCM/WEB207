@@ -79,9 +79,27 @@ moment.locale('vi', {
 
 const app = angular.module('app', ['ngRoute'])
 
-app.config(($interpolateProvider) => {
+app.config(function ($interpolateProvider, $routeProvider) {
     $interpolateProvider.startSymbol('%')
     $interpolateProvider.endSymbol('%')
+
+    $routeProvider
+        .when('/', {
+            templateUrl: 'home.html',
+            controller: 'HomeController',
+        })
+        .when('/d/:id', {
+            templateUrl: 'discussion.html',
+            controller: 'DiscussionController',
+        })
+        .when('/t/:slug', {
+            templateUrl: 'home.html',
+            controller: 'HomeController',
+        })
+        .when('/login', {
+            templateUrl: 'login.html',
+            controller: 'LoginController',
+        })
 })
 
 app.filter('since', function () {
@@ -124,24 +142,4 @@ app.controller('DiscussionController', function ($scope, $http, $routeParams) {
     $http
         .get('api/discussions/' + $routeParams.id)
         .then((response) => ($scope.discussion = response.data))
-})
-
-app.config(function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'home.html',
-            controller: 'HomeController',
-        })
-        .when('/d/:id', {
-            templateUrl: 'discussion.html',
-            controller: 'DiscussionController',
-        })
-        .when('/t/:slug', {
-            templateUrl: 'home.html',
-            controller: 'HomeController',
-        })
-        .when('/login', {
-            templateUrl: 'login.html',
-            controller: 'LoginController',
-        })
 })
