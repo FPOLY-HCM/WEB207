@@ -13,7 +13,7 @@
                 <div class="col-md-10">
                     <div class="d-flex align-items-center">
                         <h6>%discussion.user.name%</h6>
-                        <span class="ms-3 mb-2 small text-secondary">%discussion.first_post.created_at%</span>
+                        <span class="ms-3 mb-2 small text-secondary">%discussion.first_post.created_at | since%</span>
                     </div>
                     <div class="mt-3">
                         %discussion.first_post.content%
@@ -28,7 +28,7 @@
                 <div class="col-md-10">
                     <div class="d-flex align-items-center">
                         <h6>%post.user.name%</h6>
-                        <span class="ms-3 mb-2 small text-secondary">%post.created_at%</span>
+                        <span class="ms-3 mb-2 small text-secondary">%post.created_at | since%</span>
                     </div>
                     <div class="mt-3">
                         %post.content%

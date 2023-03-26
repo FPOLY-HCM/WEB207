@@ -10,31 +10,17 @@ class DiscussionController extends Controller
     public function index()
     {
         $discussions = Discussion::query()
-            ->with(['user', 'lastPost', 'lastPost.user'])
+            ->with(['user', 'lastPost', 'lastPost.user', 'tags'])
+            ->withCount('posts')
             ->get();
 
-        return $discussions;
-    }
-
-    public function store(Request $request)
-    {
-        //
+        return response()->json($discussions);
     }
 
     public function show(Discussion $discussion)
     {
         $discussion->loadMissing(['user', 'firstPost', 'posts', 'posts.user',]);
 
-        return $discussion;
-    }
-
-    public function update(Request $request, Discussion $discussion)
-    {
-        //
-    }
-
-    public function destroy(Discussion $discussion)
-    {
-        //
+        return response()->json($discussion);
     }
 }

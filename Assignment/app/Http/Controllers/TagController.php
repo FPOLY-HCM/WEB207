@@ -9,7 +9,9 @@ class TagController extends Controller
 {
     public function index()
     {
-        $tags = Tag::all();
+        $tags = Tag::query()
+            ->withCount('discussions')
+            ->get();
 
         return response()->json($tags);
     }
@@ -18,6 +20,8 @@ class TagController extends Controller
     {
         $discussions = Discussion::query()
             ->whereHas('tags', fn ($query) => $query->where('slug', $slug))
+            ->with(['user', 'lastPost', 'lastPost.user', 'tags'])
+            ->withCount('posts')
             ->get();
 
         return response()->json($discussions);

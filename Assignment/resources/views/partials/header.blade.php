@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-lg bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
             <img src="https://docs.angularjs.org/img/angularjs-for-header-only.svg" height="30">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
+                    <a class="nav-link active" aria-current="page" href="/">Trang chủ</a>
                 </li>
             </ul>
             <form class="me-4">
@@ -28,7 +28,7 @@
                     </ul>
                 </div>
             @else
-                <button type="button" class="btn btn-text text-white" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</a>
+                <button type="button" class="btn btn-text text-white" data-bs-toggle="modal" data-bs-target="#loginModal">Đăng nhập</button>
             @endauth
         </div>
     </div>
