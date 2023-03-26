@@ -68,7 +68,9 @@ class User extends Authenticatable
                 return $value;
             }
 
-            return 'https://ui-avatars.com/api/?name=' . $this->name;
+            $email = md5($this->email);
+
+            return "https://www.gravatar.com/avatar/$email?d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/$this->name/128";
         });
     }
 }
