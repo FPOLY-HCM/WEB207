@@ -1,4 +1,8 @@
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 $primary: #263238;
+
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
 
 @import "bootstrap/scss/bootstrap";
 

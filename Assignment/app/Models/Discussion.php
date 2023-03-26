@@ -28,7 +28,12 @@ class Discussion extends Model
 
     public function firstPost(): HasOne
     {
-        return $this->hasOne(Post::class)->oldest();
+        return $this->posts()->one()->oldest();
+    }
+
+    public function lastPost(): HasOne
+    {
+        return $this->posts()->one()->latest();
     }
 
     public function tags(): BelongsToMany

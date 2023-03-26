@@ -19,6 +19,11 @@
                     <a ng-href="#!d/%discussion.id%">
                         <h6>%discussion.title%</h6>
                     </a>
+                    <div class="small text-body-secondary">
+                        <i class="fas fa-reply"></i>
+                        <span class="fw-bold">%discussion.last_post.user.name%</span>
+                        đã trả lời %discussion.last_post.created_at | since%
+                    </div>
                 </div>
             </div>
         </div>

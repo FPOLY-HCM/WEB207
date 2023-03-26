@@ -10,7 +10,7 @@ class DiscussionController extends Controller
     public function index()
     {
         $discussions = Discussion::query()
-            ->with(['user', 'posts'])
+            ->with(['user', 'lastPost', 'lastPost.user'])
             ->get();
 
         return $discussions;
