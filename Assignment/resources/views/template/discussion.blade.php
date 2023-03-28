@@ -6,25 +6,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-10">
-            <div class="d-flex gap-4 align-items-start">
-                <div class="text-center">
-                    <img ng-src="%discussion.user.avatar_url%" class="rounded-circle" width="80">
-                </div>
-                <div>
-                    <div class="mb-2">
-                        <div class="d-flex gap-3">
-                            <h6 class="mb-0">%discussion.user.name%</h6>
-                            <span class="badge bg-secondary">OP</span>
-                        </div>
-                        <span class="mt-1 small text-secondary">Đăng lúc %discussion.created_at | since%</span>
-                    </div>
-                    <div class="mt-2">
-                        %discussion.first_post.content%
-                    </div>
-                </div>
-            </div>
-
-            <div class="d-flex gap-4 align-items-start border-top my-4 pt-4" ng-repeat="post in discussion.posts">
+            <div class="d-flex gap-4 align-items-start border-bottom py-4 mb-4" ng-repeat="post in discussion.posts">
                 <div class="text-center">
                     <img ng-src="%post.user.avatar_url%" class="rounded-circle" width="80">
                 </div>
@@ -35,9 +17,7 @@
                         </div>
                         <span class="mt-1 small text-secondary">Đăng lúc %post.created_at | since%</span>
                     </div>
-                    <div class="mt-2">
-                        %post.content%
-                    </div>
+                    <div style="white-space: pre-line;" class="mt-2" ng-bind-html="post.content"></div>
                 </div>
             </div>
         </div>

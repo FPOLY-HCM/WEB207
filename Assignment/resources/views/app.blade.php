@@ -17,6 +17,8 @@
         <main class="container my-4" ng-controller="MainController">
             <div ng-view></div>
         </main>
+
+        @include('partials.toast')
         @include('partials.footer')
     </body>
 </html>

@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-3">
         <div class="d-grid">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#startDiscussionModal">Đăng thảo luận</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#{{ auth()->check() ? 'startDiscussion' : 'login' }}Modal">Đăng thảo luận</button>
         </div>
         <div class="mt-4">
             <ul class="list-group list-group-flush">
@@ -46,18 +46,24 @@
     </div>
 </div>
 
-<div class="modal fade" id="startDiscussionModal" tabindex="-1" aria-labelledby="startDiscussionModalLabel" aria-hidden="true">
+<div ng-controller="StartDiscussionController" class="modal fade" id="startDiscussionModal" tabindex="-1" aria-labelledby="startDiscussionModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
         <div class="modal-content">
             <div class="modal-header">
-                <input type="text" class="form-control" placeholder="Tiêu đề">
+                <input type="text" ng-model="title" class="form-control" placeholder="Tiêu đề">
             </div>
             <div class="modal-body">
-                <textarea name="content" id="content" rows="5" class="form-control" placeholder="Nội dung"></textarea>
+                <textarea ng-model="content" id="content" rows="5" class="form-control" placeholder="Nội dung"></textarea>
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" ng-model="autoAnswer" id="auto_answer">
+                    <label class="form-check-label" for="auto_answer">
+                        AI tự động trả lời
+                    </label>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                <button type="button" class="btn btn-primary">Đăng</button>
+                <button type="button" ng-click="start()" class="btn btn-primary">Đăng</button>
             </div>
         </div>
     </div>

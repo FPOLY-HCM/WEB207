@@ -1,7 +1,9 @@
-import 'bootstrap'
+import * as bootstrap from 'bootstrap'
 import 'angular'
 import 'angular-route'
+import 'angular-sanitize'
 import moment from 'moment'
+import { handleError } from './utils';
 
 moment.locale('vi', {
     months: 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split(
@@ -77,7 +79,7 @@ moment.locale('vi', {
     },
 })
 
-const app = angular.module('app', ['ngRoute'])
+const app = angular.module('app', ['ngRoute', 'ngSanitize'])
 
 app.config(function ($interpolateProvider, $routeProvider) {
     $interpolateProvider.startSymbol('%')
@@ -120,6 +122,32 @@ app.controller('HomeController', function ($scope, $http, $routeParams) {
     $http.get('api/tags').then((response) => ($scope.tags = response.data))
 })
 
+app.controller('StartDiscussionController', function ($scope, $http, $location) {
+    $scope.title = ''
+    $scope.content = ''
+    $scope.autoAnswer = true
+
+    const modal = new bootstrap.Modal('#startDiscussionModal')
+
+    $scope.start = () => {
+        $http
+            .post('api/discussions', {
+                title: $scope.title,
+                content: $scope.content,
+                auto_answer: $scope.autoAnswer,
+            })
+            .then((response) => {
+                modal.hide()
+
+                const { id } = response.data
+
+                $location.path('/d/' + id)
+            }, function (error) {
+                handleError(error)
+            })
+    }
+})
+
 app.controller('LoginController', function ($scope, $http) {
     $scope.email = ''
     $scope.password = ''
@@ -130,10 +158,19 @@ app.controller('LoginController', function ($scope, $http) {
                 email: $scope.email,
                 password: $scope.password,
             })
-            .then((response) => {
-                console.log(response)
+            .then(() => {
+                window.location.href = '/'
+            }, function (error) {
+                handleError(error)
             })
     }
+})
+
+app.controller('RegisterController', function ($scope, $http) {
+    $scope.name = ''
+    $scope.email = ''
+    $scope.password = ''
+    $scope.password_confirmation = ''
 })
 
 app.controller('DiscussionController', function ($scope, $http, $routeParams) {

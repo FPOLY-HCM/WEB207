@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\TagController;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -19,10 +24,24 @@ Route::get('/', function () {
     $tags = Tag::all();
 
     return view('app', compact('tags'));
+})->name('home');
+
+Route::prefix('api')->name('api')->group(function () {
+    Route::middleware('guest')->group(function () {
+        Route::post('register', RegisterController::class)->name('register');
+        Route::post('login', LoginController::class)->name('login');
+    });
+
+    Route::resource('discussions', DiscussionController::class);
+    Route::resource('tags', TagController::class);
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('logout', LogoutController::class)->name('logout');
 });
 
 Route::get('/{any}.html', function ($any) {
-    if (! View::exists('template.' . $any)) {
+    if (!View::exists('template.' . $any)) {
         abort(404);
     }
 
