@@ -3,7 +3,7 @@ import 'angular'
 import 'angular-route'
 import 'angular-sanitize'
 import moment from 'moment'
-import { handleError } from './utils';
+import { handleError } from './utils'
 
 moment.locale('vi', {
     months: 'tháng 1_tháng 2_tháng 3_tháng 4_tháng 5_tháng 6_tháng 7_tháng 8_tháng 9_tháng 10_tháng 11_tháng 12'.split(
@@ -22,13 +22,13 @@ moment.locale('vi', {
     weekdaysParseExact: true,
     meridiemParse: /sa|ch/i,
     isPM: function (input) {
-        return /^ch$/i.test(input);
+        return /^ch$/i.test(input)
     },
     meridiem: function (hours, minutes, isLower) {
         if (hours < 12) {
-            return isLower ? 'sa' : 'SA';
+            return isLower ? 'sa' : 'SA'
         } else {
-            return isLower ? 'ch' : 'CH';
+            return isLower ? 'ch' : 'CH'
         }
     },
     longDateFormat: {
@@ -71,7 +71,7 @@ moment.locale('vi', {
     },
     dayOfMonthOrdinalParse: /\d{1,2}/,
     ordinal: function (number) {
-        return number;
+        return number
     },
     week: {
         dow: 1,
@@ -166,7 +166,7 @@ app.controller('LoginController', function ($scope, $http) {
     }
 })
 
-app.controller('RegisterController', function ($scope, $http) {
+app.controller('RegisterController', function ($scope) {
     $scope.name = ''
     $scope.email = ''
     $scope.password = ''

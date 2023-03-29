@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Events\DiscussionStarted;
 use App\Models\Discussion;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class DiscussionController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
         $discussions = Discussion::query()
             ->with(['user', 'lastPost', 'lastPost.user', 'tags'])
@@ -20,14 +21,14 @@ class DiscussionController extends Controller
         return response()->json($discussions);
     }
 
-    public function show(Discussion $discussion)
+    public function show(Discussion $discussion): JsonResponse
     {
         $discussion->loadMissing(['user', 'posts', 'posts.user', 'firstPost']);
 
         return response()->json($discussion);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): JsonResponse
     {
         $validated = $request->validate([
             'title' => ['required', 'string', 'min:3', 'max:150', 'unique:discussions,title'],
