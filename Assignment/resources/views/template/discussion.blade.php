@@ -13,21 +13,23 @@
                 <div>
                     <div class="mb-2">
                         <div class="d-flex gap-3">
-                            <h6 class="mb-0">%post.user.name%</h6>
+                            <a href="#!/u/%post.user.id%">
+                                <h6 class="mb-0">%post.user.name%</h6>
+                            </a>
                         </div>
                         <span class="mt-1 small text-secondary">Đăng lúc %post.created_at | since%</span>
                     </div>
-                    <div style="white-space: pre-line;" class="mt-2" ng-bind-html="post.content"></div>
+                    <div class="mt-3" ng-bind-html="post.content_html"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
-            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#commentDiscussionModal">Trả lời chủ đề</button>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#replyDiscussionModal">Trả lời chủ đề</button>
         </div>
     </div>
 </div>
 
-<div class="modal fade" id="commentDiscussionModal" tabindex="-1" aria-labelledby="commentDiscussionModalLabel" aria-hidden="true">
+<div ng-controller="ReplyDiscussionController" class="modal fade" id="replyDiscussionModal" tabindex="-1" aria-labelledby="replyDiscussionModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
         <div class="modal-content">
             <div class="modal-header">
@@ -38,7 +40,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                <button type="button" class="btn btn-primary">Trả lời</button>
+                <button type="button" ng-click="reply()" class="btn btn-primary">Trả lời</button>
             </div>
         </div>
     </div>

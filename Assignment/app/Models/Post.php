@@ -2,8 +2,11 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Mail\Markdown;
+use Illuminate\Support\Facades\Mail;
 
 class Post extends Model
 {
@@ -14,6 +17,10 @@ class Post extends Model
         'ip_address',
     ];
 
+    protected $appends = [
+        'content_html',
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -22,5 +29,10 @@ class Post extends Model
     public function discussion(): BelongsTo
     {
         return $this->belongsTo(Discussion::class);
+    }
+
+    public function contentHtml(): Attribute
+    {
+        return Attribute::get(fn () => Markdown::parse($this->content)->toHtml());
     }
 }

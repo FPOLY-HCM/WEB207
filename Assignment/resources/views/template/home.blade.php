@@ -50,7 +50,7 @@
     <div class="modal-dialog modal-dialog-centered" style="align-items: flex-end;">
         <div class="modal-content">
             <div class="modal-header">
-                <input type="text" ng-model="title" class="form-control" placeholder="Tiêu đề">
+                <input type="text" ng-model="title" autofocus class="form-control" placeholder="Tiêu đề">
             </div>
             <div class="modal-body">
                 <textarea ng-model="content" id="content" rows="5" class="form-control" placeholder="Nội dung"></textarea>
@@ -63,7 +63,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                <button type="button" ng-click="start()" class="btn btn-primary">Đăng</button>
+                <button type="button" ng-click="start()" class="btn btn-primary">
+                    <i class="fas fa-spinner fa-spin" ng-show="loading"></i>
+                    <span ng-bind="loading ? 'Đang đăng' : 'Đăng'"></span>
+                </button>
             </div>
         </div>
     </div>

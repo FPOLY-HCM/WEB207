@@ -22,7 +22,7 @@ class GenerateAnswerForDiscussion
 
         $discussion->posts()->create([
             'content' => $result->choices[0]->text,
-            'user_id' => $post->user_id,
+            'user_id' => 2,
             'ip_address' => request()->ip(),
         ]);
     }

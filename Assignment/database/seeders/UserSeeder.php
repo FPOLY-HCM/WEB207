@@ -21,20 +21,10 @@ class UserSeeder extends Seeder
                 'password' => '123456',
             ],
             [
-                'name' => fake()->name(),
-                'email' => fake()->email(),
+                'name' => 'ChatGPT',
+                'email' => 'chatgpt@openai.com',
                 'password' => fake()->password(),
             ],
-            [
-                'name' => fake()->name(),
-                'email' => fake()->email(),
-                'password' => fake()->password(),
-            ],
-            [
-                'name' => fake()->name(),
-                'email' => fake()->email(),
-                'password' => fake()->password(),
-            ]
         ];
 
         foreach ($users as $user) {

@@ -102,6 +102,10 @@ app.config(function ($interpolateProvider, $routeProvider) {
             templateUrl: 'login.html',
             controller: 'LoginController',
         })
+        .when('/u/:id', {
+            templateUrl: 'profile.html',
+            controller: 'ProfileController',
+        })
 })
 
 app.filter('since', function () {
@@ -126,10 +130,13 @@ app.controller('StartDiscussionController', function ($scope, $http, $location) 
     $scope.title = ''
     $scope.content = ''
     $scope.autoAnswer = true
+    $scope.loading = false
 
     const modal = new bootstrap.Modal('#startDiscussionModal')
 
     $scope.start = () => {
+        $scope.loading = true
+
         $http
             .post('api/discussions', {
                 title: $scope.title,
@@ -141,10 +148,30 @@ app.controller('StartDiscussionController', function ($scope, $http, $location) 
 
                 const { id } = response.data
 
+                $scope.loading = false
+
                 $location.path('/d/' + id)
             }, function (error) {
                 handleError(error)
             })
+    }
+})
+
+app.controller('ReplyDiscussionController', function ($scope, $http, $location) {
+    $scope.content = ''
+
+    const modal = new bootstrap.Modal('#replyDiscussionModal')
+
+    $scope.reply = () => {
+        $http.post('api/discussions/' + $scope.discussion.id + '/reply', {
+            content: $scope.content,
+        }).then((response) => {
+            modal.hide()
+
+            $scope.discussion.replies.push(response.data)
+        }).catch((error) => {
+            handleError(error)
+        })
     }
 })
 
@@ -179,4 +206,10 @@ app.controller('DiscussionController', function ($scope, $http, $routeParams) {
     $http
         .get('api/discussions/' + $routeParams.id)
         .then((response) => ($scope.discussion = response.data))
+})
+
+app.controller('ProfileController', function ($scope, $http, $routeParams) {
+    $scope.user = {}
+
+    $http.get('api/users/' + $routeParams.id).then((response) => ($scope.user = response.data))
 })

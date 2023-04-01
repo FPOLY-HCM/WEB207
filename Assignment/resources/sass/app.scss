@@ -3,8 +3,17 @@ $primary: #263238;
 
 @import "@fortawesome/fontawesome-free/scss/fontawesome";
 @import "@fortawesome/fontawesome-free/scss/solid";
-
 @import "bootstrap/scss/bootstrap";
+
+pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+
+    background-color: #263238;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+}
 
 .modal-dialog-bottom {
     position: fixed;

@@ -4,7 +4,9 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DiscussionController;
+use App\Http\Controllers\ReplyDiscussionController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use App\Models\Tag;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
@@ -33,7 +35,9 @@ Route::prefix('api')->name('api')->group(function () {
     });
 
     Route::resource('discussions', DiscussionController::class);
+    Route::post('discussions/{discussion}/reply', ReplyDiscussionController::class)->name('discussions.reply');
     Route::resource('tags', TagController::class);
+    Route::resource('users', UserController::class);
 });
 
 Route::middleware('auth')->group(function () {
