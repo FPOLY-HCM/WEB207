@@ -20,8 +20,8 @@ class ReplyDiscussionController extends Controller
             'ip_address' => $request->ip(),
         ]);
 
-        return response()->json([
-            'message' => 'Reply created successfully',
-        ]);
+        $discussion->loadMissing(['user', 'posts', 'posts.user', 'firstPost']);
+
+        return response()->json($discussion);
     }
 }

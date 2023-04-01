@@ -157,7 +157,7 @@ app.controller('StartDiscussionController', function ($scope, $http, $location) 
     }
 })
 
-app.controller('ReplyDiscussionController', function ($scope, $http, $location) {
+app.controller('ReplyDiscussionController', function ($scope, $rootScope, $http, $anchorScroll, $location) {
     $scope.content = ''
 
     const modal = new bootstrap.Modal('#replyDiscussionModal')
@@ -166,9 +166,15 @@ app.controller('ReplyDiscussionController', function ($scope, $http, $location) 
         $http.post('api/discussions/' + $scope.discussion.id + '/reply', {
             content: $scope.content,
         }).then((response) => {
+            $scope.content = ''
+
             modal.hide()
 
-            $scope.discussion.replies.push(response.data)
+            $rootScope.discussion = response.data
+
+            const lastPost = response.data.posts[response.data.posts.length - 1]
+            $location.hash('post-' + lastPost.id)
+            $anchorScroll()
         }).catch((error) => {
             handleError(error)
         })
@@ -200,12 +206,12 @@ app.controller('RegisterController', function ($scope) {
     $scope.password_confirmation = ''
 })
 
-app.controller('DiscussionController', function ($scope, $http, $routeParams) {
-    $scope.discussion = {}
+app.controller('DiscussionController', function ($rootScope, $http, $routeParams) {
+    $rootScope.discussion = {}
 
     $http
         .get('api/discussions/' + $routeParams.id)
-        .then((response) => ($scope.discussion = response.data))
+        .then((response) => ($rootScope.discussion = response.data))
 })
 
 app.controller('ProfileController', function ($scope, $http, $routeParams) {

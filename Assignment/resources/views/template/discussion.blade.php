@@ -6,7 +6,7 @@
     </div>
     <div class="row mt-5">
         <div class="col-md-10">
-            <div class="d-flex gap-4 align-items-start border-bottom py-4 mb-4" ng-repeat="post in discussion.posts">
+            <div id="post-%post.id%" class="d-flex gap-4 align-items-start border-bottom py-4 mb-4" ng-repeat="post in discussion.posts">
                 <div class="text-center">
                     <img ng-src="%post.user.avatar_url%" class="rounded-circle" width="80">
                 </div>
@@ -36,7 +36,7 @@
                 <h6 class="modal-title">Trả lời chủ đề: %discussion.title%</h6>
             </div>
             <div class="modal-body">
-                <textarea name="content" id="content" rows="5" class="form-control" placeholder="Nội dung"></textarea>
+                <textarea ng-model="content" id="content" rows="5" class="form-control" placeholder="Nội dung"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
